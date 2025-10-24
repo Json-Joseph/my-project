@@ -43,3 +43,19 @@ form.addEventListener("submit", (e) => {
         console.error("Error:", error);
     });
 });
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log("المستخدم سجل الدخول:", user.email);
+  } else {
+    console.log("المستخدم مش داخل");
+  }
+});
+
+firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    console.log("تم تسجيل الدخول:", userCredential.user.email);
+  })
+  .catch((error) => {
+    console.error("خطأ:", error.message);
+  });
