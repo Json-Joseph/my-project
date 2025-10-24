@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAodVCG4uXsHzPlkzu6J8J9tBN_9DRzjCI",
+    authDomain: "graduation-joja.firebaseapp.com",
+    databaseURL: "https://graduation-joja-default-rtdb.firebaseio.com",
+    projectId: "graduation-joja",
+    storageBucket: "graduation-joja.firebasestorage.app",
+    messagingSenderId: "130643040303",
+    appId: "1:130643040303:web:ec703aeea373af27780eda",
+    measurementId: "G-1DX78ZMT9Y"
+};  
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // لو المستخدم مش داخل، رجعه لصفحة تسجيل الدخول
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  });
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Graduation Joja</title>
